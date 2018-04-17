@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col s12">
+    <h4 class="teal-text">Pacientes</h4>
+  </div>
+  <div class="col s12">
+  <table class="bordered highlight">
+  <thead>
+    <th>Matricula</th>
+    <th>Nome</th>
+    <th>Progresso</th>
+    <th>Parente</th>
+    <th>Opções</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaPaciente">
+      <td>{{item.registration}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.progress}}</td>
+      <td>{{item.parent}}</td>
+      <td>
+        <button type="button" class="btn-floating" routerLink="graficos/{{item.id}}">
+          <i class="material-icons">timeline</i>
+        </button>
+        <button type="button" class="btn-floating" routerLink="detalhes/{{item.id}}">
+          <i class="material-icons">search</i>
+        </button>
+        <button type="button" class="btn-floating" (click)="editar(item)">
+          <i class="material-icons">mode_edit</i>
+        </button>
+        <button type="button" class="btn-floating" (click)="remover(item)">
+          <i class="material-icons">delete</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+<div class="fixed-action-btn">
+   <a class="btn-floating btn-large red pulse" (click)="this.servico.paciente = null;" routerLink="adicionar"><i class="large material-icons">add</i></a>
+</div>

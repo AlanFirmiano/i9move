@@ -1,0 +1,92 @@
+<h4 class="teal-text col">Exercícios</h4>
+
+<div class="col s12">
+
+  <div class="row">
+    <div *ngFor="let item of listExercise" class="col s12 m6 l4 ">
+      <div class="card medium hoverable">
+
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src={{fullImagePath}}>
+        </div>
+
+        <div class="card-content">
+          <span class="card-title activator teal-text">
+            <strong>{{item.title}}</strong>
+            <i class="material-icons right">more_vert</i>
+          </span>
+        </div>
+
+        <div class="card-reveal">
+          <span class="card-title teal-text">
+            <strong>{{item.title}}</strong>
+            <i class="material-icons right">close</i>
+          </span>
+          <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">message</i>Descrição</div>
+              <div class="collapsible-body">
+                <p *ngIf="item.description==null">Sem descrição</p>
+                <p>{{item.description}}</p>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">apps</i>Objetos</div>
+              <div class="collapsible-body">
+                <div class="chip" *ngFor="let item2 of item.objects">
+                  {{item2.name}}
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <button type="button" class="btn-floating hoverable" (click)="editar(item)">
+            <i class="material-icons">mode_edit</i>
+          </button>
+          <button type="button" class="btn-floating hoverable" (click)="remover(item)">
+            <i class="material-icons">delete</i>
+          </button>
+          <button type="button" class="btn-floating hoverable" (click)="openModal(item)">
+            <i class="material-icons">ondemand_video</i>
+          </button>
+          
+          <p *ngIf="item.midia">
+            {{item.midia.pathTitle}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col s1">
+    </div>
+  </div>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red pulse" (click)="this.servico.atividade = null;" routerLink="adicionar">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+
+  <!-- MODAL -->
+  <div id="modal1" class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+      <h4>Selecione o Video</h4>
+      <form materialize class="col s12">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <!-- <input type="file" (change)="fileChange($event)"> -->
+            <input type="file" accept="video/*" name="file" ng2FileSelect [uploader]="uploader" />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Fechar</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="up()">Enviar</a>
+    </div>
+  </div>

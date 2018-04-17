@@ -1,0 +1,38 @@
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height">
+</particles>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col s12 m8 offset-m2">
+      <form class="login-form">
+        <div class="card">
+          <div class="card-image">
+            <img src="./assets/images/login.jpg">
+            <span class="card-title">
+              Login
+            </span>
+          </div>
+          <div class="card-content">
+            <div class="input-field">
+              <input class="validate" autofocus [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}" id="email" type="email">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="input-field">
+              <input id="password" autofocus [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" type="password">
+              <label for="password">Senha</label>
+            </div>
+          </div>
+          <div class="card-action ">
+            <div class="center-align">
+              <a (click)="logar()" class="btn teal darken-1">
+                <i class="material-icons left">vpn_key</i>Login</a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

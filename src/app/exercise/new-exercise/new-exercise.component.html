@@ -1,0 +1,155 @@
+<div class="row">
+<!-- DIV DA ATIVIDADE-->
+  <div class="col m3 l2">
+
+  </div>
+  <div class="col s12 m6 l8">
+
+    <form>
+      <div class="row">
+        <h4 class="teal-text">Cadastrar Atividade</h4>
+        <div class="input-field col s12 l12">
+          <input id="nome" autofocus type="text" [(ngModel)]="atividade.title" [ngModelOptions]="{standalone: true}" class="validate">
+          <label for="nome" data-error="Invalido" data-sucess="Correto">Nome</label>
+        </div>
+        <form class="col s12 l12">
+            <div class="row">
+              <div class="input-field col s12 l12">
+                <textarea id="descricao" autofocus class="materialize-textarea" [(ngModel)]="atividade.description" [ngModelOptions]="{standalone: true}"></textarea>
+                <label for="descricao">Descrição</label>
+              </div>
+              <div class="input-field col s12 l12">
+                <textarea id="dica" autofocus class="materialize-textarea" [(ngModel)]="dica" [ngModelOptions]="{standalone: true}"></textarea>
+                <label for="dica">Dica</label>
+              </div>
+            </div>
+          </form>
+
+      </div>
+    </form>
+
+    <div class="row">
+      <h4 class="teal-text">Niveis</h4>
+      <div class="col s12 m12 l4">
+        <div class="input-field col s12 l12">
+          <input id="set" type="number" min="1" [(ngModel)]="serie.sets" [ngModelOptions]="{standalone: true}" class="validate">
+          <label for="set" data-error="Invalido" data-sucess="Correto">Series</label>
+        </div>
+      </div>
+
+      <div class="col s12 m12 l4">
+        <div class="input-field col s12 l12">
+          <input id="rep" type="number" min="1" [(ngModel)]="serie.repeats" [ngModelOptions]="{standalone: true}" class="validate">
+          <label for="rep" data-error="Invalido" data-sucess="Correto">Repetições</label>
+        </div>
+      </div>
+      <a class="btn-floating" (click)="addNivel1(serie)"><i class="material-icons">looks_one</i></a>
+      <a class="btn-floating" (click)="addNivel2(serie)"><i class="material-icons">looks_two</i></a>
+      <a class="btn-floating" (click)="addNivel3(serie)"><i class="material-icons">looks_3</i></a>
+      <div class="row"></div>
+      <div class="col s12 m12 l4">
+      <p><i class="material-icons medium text-darken-3 teal-text">looks_one</i></p>
+        <table class="bordered highlight">
+        <thead>
+        <th>Series</th>
+        <th>Repetições</th>
+        <th>Opções</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of listSerie1">
+          <td>{{item.sets}}</td>
+          <td>{{item.repeats}}</td>
+          <td>
+            <button type="button" class="btn-floating z-depth-2" (click)="remNivel1(item)">
+              <i class="material-icons ">delete</i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+      <!-- nivel 2-->
+
+      <div class="col s12 m12 l4">
+        <h4><i class="material-icons medium text-darken-3 teal-text">looks_two</i></h4>
+        <table class="bordered highlight">
+          <thead>
+          <th>Series</th>
+          <th>Repetições</th>
+          <th>Opções</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of listSerie2">
+            <td>{{item.sets}}</td>
+            <td>{{item.repeats}}</td>
+            <td>
+              <button type="button" class="btn-floating z-depth-2" (click)="remNivel2(item)">
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col s12 m12 l4">
+        <h4><i class="material-icons medium text-darken-3 teal-text">looks_3</i></h4>
+        <table class="bordered highlight">
+          <thead>
+          <th>Series</th>
+          <th>Repetições</th>
+          <th>Opções</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of listSerie3">
+            <td>{{item.sets}}</td>
+            <td>{{item.repeats}}</td>
+            <td>
+              <button type="button" class="btn-floating z-depth-2" (click)="remNivel3(item)">
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <p>{{file}}</p>
+    </div>
+    
+    <h4 class="teal-text">Objetos</h4>
+    <div class="input-field col s10 m10 l10">
+      <input id="objeto" type="text" [(ngModel)]="objeto.name" [ngModelOptions]="{standalone: true}" class="validate">
+      <label for="objeto" data-error="Invalido" data-sucess="Correto">Nome</label>
+    </div>
+    <div class="col s2 m2 l2">
+      <button type="button" class="btn-floating z-depth-2" (click)="adicionarObject(objeto)">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+    <table class="bordered highlight">
+      <thead>
+      <th>Nome</th>
+      <th>Opções</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listObjetos">
+        <td>{{item.name}}</td>
+        <td>
+          <button type="button" class="btn-floating z-depth-2" (click)="removerObject(item)">
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+</div>
+<div class="col m3 l2">
+
+</div>
+<!-- DIV BOTAO CADASTRAR -->
+<div class="fixed-action-btn">
+  <a class="btn-large btn-floating green pulse" type="submit" (click)="save()" routerLink="../"><i class="material-icons">save</i></a>
+</div>
+</div>
