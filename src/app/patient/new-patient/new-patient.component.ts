@@ -32,7 +32,10 @@ export class NewPatientComponent implements OnInit {
     if(!this.aux){
       this.paciente.registration = '';
       this.servico.salvarPaciente(this.paciente).subscribe(
-        res => this.toastService.toast(res,"green"),
+        res => {
+          this.toastService.toast(res,"green");
+          this.router.navigateByUrl('paciente');
+        },
 
         err => this.toastService.toast(err,"red")
       );
@@ -40,11 +43,11 @@ export class NewPatientComponent implements OnInit {
       this.servico.editarPaciente(this.paciente).subscribe(
         res => {
           this.toastService.toast(res,"green");
+          this.router.navigateByUrl('paciente');
         },
         err => this.toastService.toast(err,"red")
       );
     }
-    this.router.navigateByUrl('paciente');
   }
 
 

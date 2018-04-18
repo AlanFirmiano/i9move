@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ToastService } from '../../toast.service';
 import { Router } from "@angular/router";
 
@@ -39,7 +39,8 @@ export class ListPatientComponent implements OnInit {
     this.router.navigate(['paciente/editar']);
   }
 
-  ngOnInit() {
+
+  ngOnInit(){
     this.listar();
   }
 

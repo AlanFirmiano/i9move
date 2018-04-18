@@ -55,8 +55,6 @@ export class ListExerciseComponent implements OnInit {
 
   up(){
     this.uploader.authToken=localStorage.getItem('token');
-    console.log(this.uploader.getIndexOfItem(0));
-    console.log(this.uploader);
     this.uploader.uploadItem(this.uploader.queue[this.uploader.queue.length - 1]);
     this.toastService.toast("Upload feito com Sucesso!","green");
     this.listar();

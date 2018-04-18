@@ -9,4 +9,6 @@ export class Patient {
   phoneParent: string;
   progress: number;
   responsible: Responsible = new Responsible();
+  email:string;
+  password:string;
 }

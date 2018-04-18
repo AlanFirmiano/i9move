@@ -57,16 +57,13 @@ export class DetailsPatientComponent implements OnInit {
         }
       }
     );
-    console.log(this.atividades);
   }
 
   switchUnlocked(permition:Permition){
     if(permition.locked === true){
       permition.locked = false;
-      console.log("TRUE");
     }else{
       permition.locked = true;
-      console.log("FALSE");
     }
     this.servico.setLocked(permition).subscribe(
       res=>{

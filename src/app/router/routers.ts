@@ -8,7 +8,7 @@ const APP_ROUTES: Routes = [
   {path: 'atividade', loadChildren: 'app/exercise/exercise.module#ExerciseModule'},
   {path: 'permissoes', loadChildren: 'app/permition/permition.module#PermitionModule'},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: '**', component: NotfoundComponent}
+  {path: '**', redirectTo: 'paciente', pathMatch: 'full'}
 ]
 
 @NgModule({

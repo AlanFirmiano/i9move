@@ -84,7 +84,6 @@ export class NewPermitionComponent implements OnInit {
       }
     }
     this.permition = new Permition();
-    console.log(this.listPermition);
 
   }
 
@@ -103,7 +102,6 @@ export class NewPermitionComponent implements OnInit {
 
   save() {
     if (this.nomePessoa) {
-      console.log("entrou");
       let pessoa;
       for (let p2 of this.listaPaciente)
         if (p2.id == this.nomePessoa)

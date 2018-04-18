@@ -80,7 +80,6 @@ export class NewExerciseComponent implements OnInit {
     }
   }
   adicionarObject(object: Objects){
-    console.log("adicionar objeto : "+object.name);
     this.listObjetos.push(object);
     this.objeto = new Objects();
 
@@ -138,7 +137,6 @@ export class NewExerciseComponent implements OnInit {
           },
           err => {
             this.toastService.toast(err,"red");
-            console.log("ERROO"+err);
           }
         );
 
