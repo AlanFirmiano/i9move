@@ -13,13 +13,15 @@ export class AppComponent implements DoCheck{
   lista = [];
 
   mostrarMenu:boolean = false;
-  constructor(private service: AppService, private router:Router, private login:LoginService){}
+  constructor(private service: AppService, private router:Router, private login:LoginService){
+
+  }
 
   ngDoCheck(){
     this.mostrarMenu = localStorage.getItem('token')? true : false; 
   }
 
   deslogar(){
-    this.service.deslogar();
+    localStorage.removeItem('token');
   }
 }

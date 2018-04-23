@@ -5,11 +5,15 @@ import 'rxjs/add/operator/map';
 import { Patient } from '../_models/patient';
 import { Report } from '../_models/report';
 import { Permition } from '../_models/permition';
+import { Responsible } from '../_models/responsible';
 @Injectable()
 export class PatientService {
 
   public paciente: Patient = null;
+  public responsible: Responsible = null;
+
   private url:string = localStorage.getItem('url') + '/patients';
+  private res:string = localStorage.getItem('url') + '/responsible';
 
   private options:RequestOptions;
   constructor(private http: Http) {
@@ -27,6 +31,13 @@ export class PatientService {
       (err) => err.text()
     );
   }
+  public salvarResponsible(responsible: Responsible): Observable<string>{
+    return this.http.post(this.res, responsible,this.options).map(
+      (res) => res.text()
+      ,
+      (err) => err.text()
+    );
+  }
   public editarPaciente(paciente: Patient): Observable<string>{
     return this.http.put(this.url, paciente,this.options).map(
       (res) => res.text()
@@ -34,7 +45,13 @@ export class PatientService {
       (err) => err.text()
     );
   }
-
+  public editarResponsible(responsible: Responsible): Observable<string>{
+    return this.http.put(this.res, responsible,this.options).map(
+      (res) => res.text()
+      ,
+      (err) => err.text()
+    );
+  }
   public removerPaciente(paciente: Patient): Observable<string>{
     return this.http.delete(this.url + '/' + paciente.id,this.options).map(
       (res) => res.text()
@@ -42,7 +59,13 @@ export class PatientService {
       (err) => err.text()
     );
   }
-
+  public removerResponsible(responsible: Responsible): Observable<string>{
+    return this.http.delete(this.res + '/' + responsible.id,this.options).map(
+      (res) => res.text()
+      ,
+      (err) => err.text()
+    );
+  }
   public detalhesPaciente(id: number): Observable<any>{
     return this.http.get(this.url + '/' + id,this.options).map(
       (res) => res.json()
@@ -64,6 +87,15 @@ export class PatientService {
   }
   public listaAtividades (id: number): Observable<Report[]> {
     return this.http.get(localStorage.getItem('url') + '/report/byPatient/' + id,this.options).map(
+      (res) => res.json()
+      ,
+      function(err){
+
+      }
+    );
+  }
+  public listaReport (): Observable<Report[]> {
+    return this.http.get(localStorage.getItem('url') + '/report',this.options).map(
       (res) => res.json()
       ,
       function(err){
@@ -118,4 +150,11 @@ export class PatientService {
     );
   }
 
+  public listaResponsible(): Observable<Patient[]>{
+    return this.http.get(this.res,this.options).map(
+      (res) => res.json()
+      ,
+      function(err){}
+    );
+  }
 }

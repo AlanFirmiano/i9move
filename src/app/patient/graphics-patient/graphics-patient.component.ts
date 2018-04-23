@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import * as c3 from 'c3';
@@ -18,12 +18,10 @@ export class GraphicsPatientComponent implements OnInit {
 
   id: number;
   paciente: Patient = new Patient();
-  teste: string[];
   inscricao: Subscription;
   atividades: Report[] = [];
   medias = [];
-  todas: Exercise[] = [];
-  
+  reports: Report[] = [];
   e1 = 0;
   e2 = 0;
   e3 = 0;
@@ -31,34 +29,53 @@ export class GraphicsPatientComponent implements OnInit {
   e5 = 0;
 
   ngOnInit() {
-
+    
     this.inscricao = this.route.params.subscribe((params:any) => {
         this.id = params['id'];
         this.servico.detalhesPaciente(this.id).subscribe(
           res => this.paciente = res
         );
-
-        this.servico.listaAtividades(this.id).subscribe(
-          res => {
-            this.atividades = res;
-            for(let at of this.atividades) {
-              this.servico.mediaAtividades(at.permition.grasp.exercise.id).subscribe(
-                resp => {
-                  this.medias.push(resp);
-                  this.grafico();
-                }
-              );
-            }
-
-          }
-        );
-
         if(this.paciente == null){
           this.router.navigate(['']);
         }
+        this.servico.listaReport().subscribe(
+          res => this.reports = res
+        );
+        this.servico.listaAtividades(this.id).subscribe(
+          res => {
+            this.atividades = res;
+            this.medias = [];
+            //REPORT POR PESSOA = ATIVIDADES
+            for(let at of this.atividades) {
+              let somador = 0;
+              let qtd = 0;
+              for(let y of this.reports){
+                if(at.permition.grasp.exercise.id == y.permition.grasp.exercise.id){
+                  somador = somador + y.time;
+                  qtd = qtd + 1;
+                }
+              }
+              this.medias.push((somador/qtd));
+              this.grafico();   
+              /*this.servico.mediaAtividades(at.permition.grasp.exercise.id).subscribe(
+                resp => {
+                  console.log(resp);
+                  this.medias.push(resp);
+                  this.grafico();                  
+                },err=>{
+                  console.log(err);
+                }
+              );*/
+              
+            }
+          },err =>{
+            console.log(err);
+          }
+        );
       }
+      
     );
-
+    
   }
 
   grafico(){
@@ -70,22 +87,25 @@ export class GraphicsPatientComponent implements OnInit {
     let x1 = [];
     let x2 = [];
     let xn = [];
-    x1.push("Tempo do Paciente");
-    for(let i of this.atividades){
-      x1.push(i.time);
-      xn.push(i.permition.grasp.exercise.title);
-    }
-    x2=x1;
-    vet.push("Tempo do Paciente");
-    for(let i of this.atividades){
-      vet.push(i.time);
-    }
 
     vet2.push("Tempo Medio");
     for(let x=0;x<this.medias.length;x++){
       vet2.push(this.medias[x]);
     }
-
+        
+    vet.push("Tempo do Paciente");
+    for(let i of this.atividades){
+      vet.push(i.time);
+    }
+    x1.push("Tempo do Paciente");
+    for(let i of this.atividades){
+      x1.push(i.time);
+      xn.push(i.permition.grasp.exercise.title);
+    }
+    x2.push("Tempo do Paciente");
+    for(let i of this.atividades){
+      x2.push(i.time);
+    }
     for(let i of this.atividades){
       nomes.push(i.permition.grasp.exercise.title);
     }
@@ -173,7 +193,6 @@ export class GraphicsPatientComponent implements OnInit {
           ['x'].concat(xn),
           x1,
           x2
-
         ],
         types:{
           x1:'bar',
@@ -200,6 +219,9 @@ export class GraphicsPatientComponent implements OnInit {
         }
       }
     });
+    setTimeout(function () {
+      chart3.transform('spline');
+    }, 1000);
   }
 
   myStyle: object = {};

@@ -7,7 +7,7 @@
   <div class="col s12">
     <p>
       <b>Responsável :</b>
-      {{paciente?.responsible.name}}
+      {{paciente?.responsible?.name}}
       <br>
       <b>Matricula :</b>
       {{paciente?.registration}}
@@ -26,7 +26,9 @@
     </p>
   </div>
   <div class="col s12 teal">
-    <h4 class="white-text">Reports</h4>
+    <div class="col s12">
+      <h4 class="white-text">Reports</h4>
+    </div>
     <div *ngFor="let item of atividades" class="col s12 m6 l6">
 
       <div class="card small">
@@ -68,8 +70,10 @@
 
     </div>
 
-    <h4 class="white-text">Permissões</h4>
+    <div class="col s12">
+      <h4 class="white-text">Permissões</h4>
 
+    </div>
     <div class="col s12 white">
       <table class="bordered highlight">
         <thead>

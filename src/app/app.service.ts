@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 export class AppService {
 
   constructor(private http: Http) {
-    //localStorage.setItem('url','http://i9move.quixada.ufc.br/api');
-    localStorage.setItem('url','http://localhost:8080');
+    localStorage.setItem('url','http://i9move.quixada.ufc.br/api');
+    //localStorage.setItem('url','http://localhost:8080');
   }
   
   public deslogar(){

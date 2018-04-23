@@ -6,7 +6,9 @@ import { HttpModule } from '@angular/http';
 import { PatientService } from './patient.service';
 import { PatientComponent } from './patient.component';
 import { ListPatientComponent } from './list-patient/lista-paciente.component';
+import { ListUserComponent } from './list-user/list-user.component';
 import { NewPatientComponent } from './new-patient/new-patient.component';
+import { NewUserComponent } from './new-user/new-user.component';
 import { DetailsPatientComponent } from './details-patient/details-patient.component';
 import { MaterializeModule } from 'angular2-materialize';
 import { PatientRoutingModule } from './patient.router.module';
@@ -28,14 +30,18 @@ import { ParticlesModule } from 'angular-particle';
     ListPatientComponent,
     NewPatientComponent,
     DetailsPatientComponent,
-    GraphicsPatientComponent
+    GraphicsPatientComponent,
+    NewUserComponent,
+    ListUserComponent
   ],
   exports: [
     PatientComponent,
     ListPatientComponent,
     NewPatientComponent,
     DetailsPatientComponent,
-    GraphicsPatientComponent
+    GraphicsPatientComponent,
+    NewUserComponent,
+    ListUserComponent
   ],
 })
 export class PatientModule { }

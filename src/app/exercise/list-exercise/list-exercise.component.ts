@@ -17,7 +17,7 @@ export class ListExerciseComponent implements OnInit {
 
   exercise:Exercise;
   public uploader : FileUploader = new FileUploader(
-  {url: "http://localhost:8080/exercises/upload",
+  {url: "http://i9move.quixada.ufc.br:80/exercises/upload",
   
   itemAlias:'file' ,
   autoUpload:false
@@ -38,7 +38,7 @@ export class ListExerciseComponent implements OnInit {
   openModal(atividade:Exercise) {
     this.exercise = atividade;
     this.uploader = new FileUploader(
-      {url: "http://localhost:8080/exercises/"+this.exercise.id+"/upload",
+      {url: "http://i9move.quixada.ufc.br/api/exercises/"+this.exercise.id+"/upload",
       
       itemAlias:'file' 
       });
