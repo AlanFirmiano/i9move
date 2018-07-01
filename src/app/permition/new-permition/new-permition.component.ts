@@ -57,6 +57,20 @@ export class NewPermitionComponent implements OnInit {
 
   }
 
+  baixo(permition:Permition){
+    var index = this.listPermition.indexOf(permition);
+    var indexAux = index+1;
+    var aux = this.listPermition[index];
+    this.listPermition[index] = this.listPermition[indexAux];
+    this.listPermition[indexAux] = aux;
+  }
+  cima(permition: Permition){
+    var index = this.listPermition.indexOf(permition);
+    var indexAux = index-1;
+    var aux = this.listPermition[index];
+    this.listPermition[index] = this.listPermition[indexAux];
+    this.listPermition[indexAux] = aux;
+  }
   remPermition(permition: Permition) {
     var index = this.listPermition.indexOf(permition, 0);
     if (index > -1) {
@@ -102,6 +116,19 @@ export class NewPermitionComponent implements OnInit {
 
   save() {
     if (this.nomePessoa) {
+      if(this.nomePessoa==-1){
+        for (let p2 of this.listaPaciente){
+          for(let p of this.listPermition){
+            p.locked = true;
+            p.patient = p2;
+            this.servico.salvarPermissao(p).subscribe(
+            res => this.toastService.toast(res, "green"),
+  
+            err => this.toastService.toast(err, "red")
+          );
+        }
+      }
+    }else{
       let pessoa;
       for (let p2 of this.listaPaciente)
         if (p2.id == this.nomePessoa)
@@ -124,7 +151,8 @@ export class NewPermitionComponent implements OnInit {
           err => this.toastService.toast(err, "red")
         );
       }
-    } else {
+    }
+   } else {
       this.toastService.toast("Selecione um Paciente", "red");
     }
 

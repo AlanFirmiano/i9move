@@ -31,6 +31,7 @@ export class NewPatientComponent implements OnInit {
   save(){
     if(!this.aux){
       this.paciente.registration = '';
+      this.paciente.level = 1;
       this.servico.salvarPaciente(this.paciente).subscribe(
         res => {
           this.toastService.toast(res,"green");

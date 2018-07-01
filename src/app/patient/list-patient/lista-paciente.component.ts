@@ -17,7 +17,9 @@ export class ListPatientComponent implements OnInit {
   constructor(private servico: PatientService, private toastService: ToastService, private router: Router) {
 
   }
-
+  addPermitions(level:number){
+    console.log("Adicionou no level -> "+level);
+  }
   listar(){
     this.servico.listaPaciente().subscribe(
       res => this.listaPaciente = res

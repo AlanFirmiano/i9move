@@ -8,6 +8,7 @@ export class Patient {
   parent: string;
   phoneParent: string;
   progress: number;
+  level:number;
   responsible: Responsible = new Responsible();
   email:string;
   password:string;

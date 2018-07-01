@@ -8,7 +8,7 @@
     <th>Matricula</th>
     <th>Nome</th>
     <th>Progresso</th>
-    <th>Parente</th>
+    <th>Niveis</th>
     <th>Opções</th>
   </thead>
   <tbody>
@@ -16,7 +16,23 @@
       <td>{{item.registration}}</td>
       <td>{{item.name}}</td>
       <td>{{item.progress}}</td>
-      <td>{{item.parent}}</td>
+      <td>
+        <button type="button" class="btn-floating" (click)="addPermitions(1)">
+          <i class="material-icons">filter_1</i>
+        </button>
+        <button type="button" *ngIf="item.level < 2"class="btn-floating orange" (click)="addPermitions(2)">
+          <i class="material-icons">filter_2</i>
+        </button>
+        <button type="button" *ngIf="item.level >= 2"class="btn-floating" (click)="addPermitions(2)">
+          <i class="material-icons">filter_2</i>
+        </button>
+        <button type="button" *ngIf="item.level < 3"class="btn-floating orange" (click)="addPermitions(3)">
+            <i class="material-icons">filter_3</i>
+          </button>
+        <button type="button" *ngIf="item.level >= 3" class="btn-floating" (click)="addPermitions(3)">
+          <i class="material-icons">filter_3</i>
+        </button>
+      </td>
       <td>
         <button type="button" class="btn-floating" routerLink="graficos/{{item.id}}">
           <i class="material-icons">timeline</i>
