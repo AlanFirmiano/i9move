@@ -67,6 +67,13 @@ public removerAtividade(atividade: Exercise): Observable<string> {
     );
   }
 
+  public atualizarGrasp(grasp: Grasp): Observable<string> {
+    return this.http.put(this.urlGrasp, grasp,this.options).map(
+      (res) => res.text(),
+      (err) => err.text()
+    );
+  }
+
   public listarGrasp (): Observable<any> {
     return this.http.get(this.urlGrasp,this.options).map(
       (res) => res.json()

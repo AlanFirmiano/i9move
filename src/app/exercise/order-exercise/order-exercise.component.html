@@ -6,70 +6,70 @@
 -->
 
 <div class="col s12 m12 l12">
-    <h5 class="teal-text">Nivel 1</h5>
-    <table class="bordered highlight">
-      <thead>
-        <th>Nome</th>
-        <th>Opções</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let y of listGrasp1;let i = index">
-          <td>{{i+1}} - {{y.exercise.title}}</td>
-          <td>
-            <button *ngIf="i != (listGrasp1?.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo1(y)">
-                <i class="material-icons">keyboard_arrow_down</i>
-              </button>
-              <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima1(y)">
-                <i class="material-icons">keyboard_arrow_up</i>
-              </button>
-            </td>  
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h5 class="teal-text">Nivel 1</h5>
+  <table class="bordered highlight">
+    <thead>
+      <th>Nome</th>
+      <th>Opções</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let y of listGrasp1;let i = index">
+        <td>{{i+1}} - {{y.exercise.title}}</td>
+        <td>
+          <button *ngIf="i != (listGrasp1?.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo1(y)">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
+          <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima1(y)">
+            <i class="material-icons">keyboard_arrow_up</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <div class="col s12 m12 l12">
-      <h5 class="teal-text">Nivel 2</h5>
-      <table class="bordered highlight">
-        <thead>
-          <th>Nome</th>
-          <th>Opções</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let y of listGrasp2; let i = index">
-            <td>{{i+1}} - {{y.exercise.title}}</td>
-            <td>
-              <button *ngIf="i != (listGrasp2.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo2(y)">
-                  <i class="material-icons">keyboard_arrow_down</i>
-                </button>
-                <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima2(y)">
-                  <i class="material-icons">keyboard_arrow_up</i>
-                </button>
-              </td>  
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="col s12 m12 l12">
+  <h5 class="teal-text">Nivel 2</h5>
+  <table class="bordered highlight">
+    <thead>
+      <th>Nome</th>
+      <th>Opções</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let y of listGrasp2; let i = index">
+        <td>{{i+1}} - {{y.exercise.title}}</td>
+        <td>
+          <button *ngIf="i != (listGrasp2.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo2(y)">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
+          <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima2(y)">
+            <i class="material-icons">keyboard_arrow_up</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <div class="col s12 m12 l12">
-        <h5 class="teal-text">Nivel 3</h5>
-        <table class="bordered highlight">
-          <thead>
-            <th>Nome</th>
-            <th>Opções</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let y of listGrasp3;let i = index">
-              <td>{{i+1}} - {{y.exercise.title}}</td>
-              <td>
-                <button *ngIf="i != (listGrasp3?.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo3(y)">
-                    <i class="material-icons">keyboard_arrow_down</i>
-                  </button>
-                  <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima3(y)">
-                    <i class="material-icons">keyboard_arrow_up</i>
-                  </button>
-                </td>  
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="col s12 m12 l12">
+  <h5 class="teal-text">Nivel 3</h5>
+  <table class="bordered highlight">
+    <thead>
+      <th>Nome</th>
+      <th>Opções</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let y of listGrasp3;let i = index">
+        <td>{{i+1}} - {{y.exercise.title}}</td>
+        <td>
+          <button *ngIf="i != (listGrasp3?.length-1)" type="button" class="btn-floating z-depth-2" (click)="baixo3(y)">
+            <i class="material-icons">keyboard_arrow_down</i>
+          </button>
+          <button *ngIf="i != 0" type="button" class="btn-floating z-depth-2" (click)="cima3(y)">
+            <i class="material-icons">keyboard_arrow_up</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
