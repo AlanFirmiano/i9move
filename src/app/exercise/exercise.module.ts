@@ -11,6 +11,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { ExerciseRoutingModule } from './exercise.router.module';
 import { ToastService } from '../toast.service';
 import { FileUploadModule } from 'ng2-file-upload';
+import { OrderExerciseComponent } from './order-exercise/order-exercise.component';
 
 @NgModule({
   imports: [
@@ -24,10 +25,12 @@ import { FileUploadModule } from 'ng2-file-upload';
   declarations: [
     ExerciseComponent,
     NewExerciseComponent,
-    ListExerciseComponent
+    ListExerciseComponent,
+    OrderExerciseComponent
   ],
   exports: [
     ExerciseComponent, 
+    OrderExerciseComponent,
     ListExerciseComponent, 
     NewExerciseComponent
   ]

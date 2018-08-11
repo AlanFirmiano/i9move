@@ -3,7 +3,6 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Exercise } from '../_models/exercise';
-import { Objects } from "../_models/objects";
 import {Grasp} from "../_models/grasp";
 
 @Injectable()
@@ -76,4 +75,12 @@ public removerAtividade(atividade: Exercise): Observable<string> {
     );
   }
 
+
+  public listarGraspPorNivel (level:number): Observable<any> {
+    return this.http.get(this.urlGrasp+"/level/"+level,this.options).map(
+      (res) => res.json()
+      ,
+      (err) => err.text()
+    );
+  }
 }

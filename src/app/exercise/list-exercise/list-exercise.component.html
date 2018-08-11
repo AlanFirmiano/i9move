@@ -61,12 +61,6 @@
     <div class="col s1">
     </div>
   </div>
-  <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red pulse" (click)="this.servico.atividade = null;" routerLink="adicionar">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
-
 
   <!-- MODAL -->
   <div id="modal1" class="modal modal-fixed-footer" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
@@ -90,3 +84,30 @@
       <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="up()">Enviar</a>
     </div>
   </div>
+
+
+
+  <!-- floating button -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large">
+      <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating btn-large red pulse" (click)="this.servico.atividade = null;" routerLink="adicionar">
+          <i class="large material-icons">add</i>
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating yellow darken-1" routerLink="/atividade/ordenar">
+          <i class="material-icons">reorder</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+<!-- 
+  <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red pulse" (click)="this.servico.atividade = null;" routerLink="adicionar">
+          <i class="large material-icons">add</i>
+        </a>
+  </div> -->
