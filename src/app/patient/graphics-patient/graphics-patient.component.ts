@@ -149,7 +149,7 @@ export class GraphicsPatientComponent implements OnInit {
         y: {
           tick: {
             format: function (d) {
-              return d + "min";
+              return d + "seg";
             }
           }
         }
@@ -213,7 +213,7 @@ export class GraphicsPatientComponent implements OnInit {
         y: {
           tick: {
             format: function (d) {
-              return d + "min";
+              return d + "seg";
             }
           }
         }

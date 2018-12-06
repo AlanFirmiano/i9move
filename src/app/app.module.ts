@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppService } from './app.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/routers';
-import { MaterializeModule } from 'angular2-materialize';
+import {MaterializeModule} from 'angular2-materialize';
 import { LoginModule } from './login/login.module';
 import { LoginService } from './login/login.service';
 import { AuthGuard } from './guards/auth.guard';
